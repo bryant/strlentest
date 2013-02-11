@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
     std::string k(argv[1]);
 
     for (unsigned int i=0; i<k.length(); i++) {
-        printf("%c\n", k[i]);
+        printf("%c\n", k.c_str()[i]);
     }
 
     return 0;
