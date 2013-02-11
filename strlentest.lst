@@ -49,74 +49,53 @@
   49              	.Ltext0:
   50              		.section	.rodata.str1.1,"aMS",@progbits,1
   51              	.LC0:
-  52 0000 55736167 		.string	"Usage: %s string\n"
-  52      653A2025 
-  52      73207374 
-  52      72696E67 
-  52      0A00
-  53              	.LC1:
-  54 0012 25630A00 		.string	"%c\n"
-  55              		.section	.text.startup,"ax",@progbits
-  56              		.p2align 4,,15
-  57              		.globl	main
-  59              	main:
-  60              	.LFB34:
-  61              		.file 1 "strlentest.c"
+  52 0000 25630A00 		.string	"%c\n"
+  53              		.text
+  54              		.p2align 4,,15
+  55              		.globl	fn
+  57              	fn:
+  58              	.LFB34:
+  59              		.file 1 "strlentest.c"
    1:strlentest.c  **** #include <stdio.h>
    2:strlentest.c  **** #include <string.h>
    3:strlentest.c  **** #include "rdtsc.h"
    4:strlentest.c  **** 
    5:strlentest.c  **** typedef unsigned long long ull;
    6:strlentest.c  **** 
-   7:strlentest.c  **** int main(int argc, char** argv) {
-  62              		.loc 1 7 0
-  63              		.cfi_startproc
-  64              	.LVL0:
-  65 0000 4154     		pushq	%r12	#
-  66              	.LCFI0:
-  67              		.cfi_def_cfa_offset 16
-  68              		.cfi_offset 12, -16
-   8:strlentest.c  ****     if (argc != 2) {
-  69              		.loc 1 8 0
-  70 0002 83FF02   		cmpl	$2, %edi	#, argc
-   7:strlentest.c  **** int main(int argc, char** argv) {
-  71              		.loc 1 7 0
-  72 0005 55       		pushq	%rbp	#
-  73              	.LCFI1:
-  74              		.cfi_def_cfa_offset 24
-  75              		.cfi_offset 6, -24
-  76 0006 53       		pushq	%rbx	#
-  77              	.LCFI2:
-  78              		.cfi_def_cfa_offset 32
-  79              		.cfi_offset 3, -32
-  80              		.loc 1 8 0
-  81 0007 753E     		jne	.L8	#,
-   9:strlentest.c  ****         printf("Usage: %s string\n", argv[0]);
-  10:strlentest.c  ****         return -1;
-  11:strlentest.c  ****     }
-  12:strlentest.c  **** 
-  13:strlentest.c  ****     const char* k = argv[1];
-  82              		.loc 1 13 0
-  83 0009 4C8B6608 		movq	8(%rsi), %r12	# MEM[(char * *)argv_4(D) + 8B], k
-  84              	.LVL1:
-  85              	.LBB7:
-  14:strlentest.c  **** 
-  15:strlentest.c  ****     for (unsigned int i=0; i<strlen(k); i++) {
-  86              		.loc 1 15 0
-  87 000d 31DB     		xorl	%ebx, %ebx	# i
-  88 000f EB20     		jmp	.L4	#
-  89              	.LVL2:
-  90              		.p2align 4,,10
-  91 0011 0F1F8000 		.p2align 3
-  91      000000
-  92              	.L5:
-  16:strlentest.c  ****         printf("%c\n", k[i]);
-  93              		.loc 1 16 0 discriminator 2
-  94 0018 410FBE14 		movsbl	(%r12,%rbp), %edx	# *D.2364_12, *D.2364_12
-  94      2C
-  95              	.LBB8:
-  96              	.LBB9:
-  97              		.file 2 "/usr/include/x86_64-linux-gnu/bits/stdio2.h"
+   7:strlentest.c  **** void fn(const char* const str) {
+  60              		.loc 1 7 0
+  61              		.cfi_startproc
+  62              	.LVL0:
+  63 0000 4154     		pushq	%r12	#
+  64              	.LCFI0:
+  65              		.cfi_def_cfa_offset 16
+  66              		.cfi_offset 12, -16
+  67 0002 4989FC   		movq	%rdi, %r12	# str, str
+  68 0005 55       		pushq	%rbp	#
+  69              	.LCFI1:
+  70              		.cfi_def_cfa_offset 24
+  71              		.cfi_offset 6, -24
+  72 0006 53       		pushq	%rbx	#
+  73              	.LCFI2:
+  74              		.cfi_def_cfa_offset 32
+  75              		.cfi_offset 3, -32
+  76              	.LBB7:
+   8:strlentest.c  ****     for (unsigned int i=0; i<strlen(str); i++) {
+  77              		.loc 1 8 0
+  78 0007 31DB     		xorl	%ebx, %ebx	# i
+  79 0009 EB1E     		jmp	.L2	#
+  80              	.LVL1:
+  81 000b 0F1F4400 		.p2align 4,,10
+  81      00
+  82              		.p2align 3
+  83              	.L3:
+   9:strlentest.c  ****         printf("%c\n", str[i]);
+  84              		.loc 1 9 0 discriminator 2
+  85 0010 410FBE14 		movsbl	(%r12,%rbp), %edx	# *D.2371_7, *D.2371_7
+  85      2C
+  86              	.LBB8:
+  87              	.LBB9:
+  88              		.file 2 "/usr/include/x86_64-linux-gnu/bits/stdio2.h"
    1:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** /* Checking macros for stdio functions.
    2:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    Copyright (C) 2004, 2005, 2007, 2008 Free Software Foundation, Inc.
    3:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    This file is part of the GNU C Library.
@@ -222,87 +201,132 @@
  103:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** printf (__const char *__restrict __fmt, ...)
  104:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** {
  105:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****   return __printf_chk (__USE_FORTIFY_LEVEL - 1, __fmt, __va_arg_pack ());
-  98              		.loc 2 105 0 discriminator 2
-  99 001d BE000000 		movl	$.LC1, %esi	#,
-  99      00
- 100 0022 BF010000 		movl	$1, %edi	#,
- 100      00
- 101 0027 31C0     		xorl	%eax, %eax	#
- 102              	.LBE9:
- 103              	.LBE8:
-  15:strlentest.c  ****     for (unsigned int i=0; i<strlen(k); i++) {
- 104              		.loc 1 15 0 discriminator 2
- 105 0029 83C301   		addl	$1, %ebx	#, i
- 106              	.LVL3:
- 107              	.LBB11:
- 108              	.LBB10:
- 109              		.loc 2 105 0 discriminator 2
- 110 002c E8000000 		call	__printf_chk	#
- 110      00
- 111              	.LVL4:
- 112              	.L4:
- 113              	.LBE10:
- 114              	.LBE11:
-  15:strlentest.c  ****     for (unsigned int i=0; i<strlen(k); i++) {
- 115              		.loc 1 15 0 discriminator 1
- 116 0031 89DD     		movl	%ebx, %ebp	# i, D.2367
- 117 0033 4C89E7   		movq	%r12, %rdi	# k,
- 118 0036 E8000000 		call	strlen	#
- 118      00
- 119              	.LVL5:
- 120 003b 4839C5   		cmpq	%rax, %rbp	# tmp78, D.2367
- 121 003e 72D8     		jb	.L5	#,
+  89              		.loc 2 105 0 discriminator 2
+  90 0015 BE000000 		movl	$.LC0, %esi	#,
+  90      00
+  91 001a BF010000 		movl	$1, %edi	#,
+  91      00
+  92 001f 31C0     		xorl	%eax, %eax	#
+  93              	.LBE9:
+  94              	.LBE8:
+   8:strlentest.c  ****     for (unsigned int i=0; i<strlen(str); i++) {
+  95              		.loc 1 8 0 discriminator 2
+  96 0021 83C301   		addl	$1, %ebx	#, i
+  97              	.LVL2:
+  98              	.LBB11:
+  99              	.LBB10:
+ 100              		.loc 2 105 0 discriminator 2
+ 101 0024 E8000000 		call	__printf_chk	#
+ 101      00
+ 102              	.LVL3:
+ 103              	.L2:
+ 104              	.LBE10:
+ 105              	.LBE11:
+   8:strlentest.c  ****     for (unsigned int i=0; i<strlen(str); i++) {
+ 106              		.loc 1 8 0 discriminator 1
+ 107 0029 89DD     		movl	%ebx, %ebp	# i, D.2374
+ 108 002b 4C89E7   		movq	%r12, %rdi	# str,
+ 109 002e E8000000 		call	strlen	#
+ 109      00
+ 110              	.LVL4:
+ 111 0033 4839C5   		cmpq	%rax, %rbp	# tmp73, D.2374
+ 112 0036 72D8     		jb	.L3	#,
+ 113              	.LBE7:
+  10:strlentest.c  ****     }
+  11:strlentest.c  **** }
+ 114              		.loc 1 11 0
+ 115 0038 5B       		popq	%rbx	#
+ 116              	.LCFI3:
+ 117              		.cfi_def_cfa_offset 24
+ 118              	.LVL5:
+ 119 0039 5D       		popq	%rbp	#
+ 120              	.LCFI4:
+ 121              		.cfi_def_cfa_offset 16
+ 122              	.LVL6:
+ 123 003a 415C     		popq	%r12	#
+ 124              	.LCFI5:
+ 125              		.cfi_def_cfa_offset 8
+ 126              	.LVL7:
+ 127 003c C3       		ret
+ 128              		.cfi_endproc
+ 129              	.LFE34:
+ 131              		.section	.rodata.str1.1
+ 132              	.LC1:
+ 133 0004 55736167 		.string	"Usage: %s string\n"
+ 133      653A2025 
+ 133      73207374 
+ 133      72696E67 
+ 133      0A00
+ 134              		.section	.text.startup,"ax",@progbits
+ 135              		.p2align 4,,15
+ 136              		.globl	main
+ 138              	main:
+ 139              	.LFB35:
+  12:strlentest.c  **** 
+  13:strlentest.c  **** int main(int argc, char** argv) {
+ 140              		.loc 1 13 0
+ 141              		.cfi_startproc
+ 142              	.LVL8:
+ 143 0000 4883EC08 		subq	$8, %rsp	#,
+ 144              	.LCFI6:
+ 145              		.cfi_def_cfa_offset 16
+  14:strlentest.c  ****     if (argc != 2) {
+ 146              		.loc 1 14 0
+ 147 0004 83FF02   		cmpl	$2, %edi	#, argc
+ 148 0007 7510     		jne	.L10	#,
+  15:strlentest.c  ****         printf("Usage: %s string\n", argv[0]);
+  16:strlentest.c  ****         return -1;
   17:strlentest.c  ****     }
   18:strlentest.c  **** 
-  19:strlentest.c  ****     return 0;
- 122              		.loc 1 19 0
- 123 0040 31C0     		xorl	%eax, %eax	# D.2362
- 124              	.LVL6:
- 125              	.L3:
- 126              	.LBE7:
-  20:strlentest.c  **** }
- 127              		.loc 1 20 0
- 128 0042 5B       		popq	%rbx	#
- 129              	.LCFI3:
- 130              		.cfi_remember_state
- 131              		.cfi_def_cfa_offset 24
- 132 0043 5D       		popq	%rbp	#
- 133              	.LCFI4:
- 134              		.cfi_def_cfa_offset 16
- 135 0044 415C     		popq	%r12	#
- 136              	.LCFI5:
- 137              		.cfi_def_cfa_offset 8
- 138 0046 C3       		ret
- 139              	.LVL7:
- 140              	.L8:
- 141              	.LCFI6:
- 142              		.cfi_restore_state
- 143              	.LBB12:
- 144              	.LBB13:
- 145              		.loc 2 105 0
- 146 0047 488B16   		movq	(%rsi), %rdx	# *argv_4(D),
- 147 004a BF010000 		movl	$1, %edi	#,
- 147      00
- 148              	.LVL8:
- 149 004f BE000000 		movl	$.LC0, %esi	#,
- 149      00
- 150              	.LVL9:
- 151 0054 31C0     		xorl	%eax, %eax	#
- 152 0056 E8000000 		call	__printf_chk	#
+  19:strlentest.c  ****     fn((const char* const) argv[1]);
+ 149              		.loc 1 19 0
+ 150 0009 488B7E08 		movq	8(%rsi), %rdi	# MEM[(char * *)argv_3(D) + 8B], MEM[(char * *)argv_3(D) + 8B]
+ 151              	.LVL9:
+ 152 000d E8000000 		call	fn	#
  152      00
  153              	.LVL10:
- 154              	.LBE13:
- 155              	.LBE12:
-  10:strlentest.c  ****         return -1;
- 156              		.loc 1 10 0
- 157 005b 83C8FF   		orl	$-1, %eax	#, D.2362
- 158 005e EBE2     		jmp	.L3	#
- 159              		.cfi_endproc
- 160              	.LFE34:
- 162              		.text
- 163              	.Letext0:
- 164              		.file 3 "/usr/lib/gcc/x86_64-linux-gnu/4.7/include/stddef.h"
- 165              		.file 4 "/usr/include/x86_64-linux-gnu/bits/types.h"
- 166              		.file 5 "/usr/include/libio.h"
- 167              		.file 6 "/usr/include/stdio.h"
- 168              		.file 7 "/usr/include/string.h"
+  20:strlentest.c  **** 
+  21:strlentest.c  ****     return 0;
+ 154              		.loc 1 21 0
+ 155 0012 31C0     		xorl	%eax, %eax	# D.2364
+ 156              	.L8:
+  22:strlentest.c  **** }
+ 157              		.loc 1 22 0
+ 158 0014 4883C408 		addq	$8, %rsp	#,
+ 159              	.LCFI7:
+ 160              		.cfi_remember_state
+ 161              		.cfi_def_cfa_offset 8
+ 162 0018 C3       		ret
+ 163              	.LVL11:
+ 164              	.L10:
+ 165              	.LCFI8:
+ 166              		.cfi_restore_state
+ 167              	.LBB12:
+ 168              	.LBB13:
+ 169              		.loc 2 105 0
+ 170 0019 488B16   		movq	(%rsi), %rdx	# *argv_3(D),
+ 171 001c BF010000 		movl	$1, %edi	#,
+ 171      00
+ 172              	.LVL12:
+ 173 0021 BE000000 		movl	$.LC1, %esi	#,
+ 173      00
+ 174              	.LVL13:
+ 175 0026 31C0     		xorl	%eax, %eax	#
+ 176 0028 E8000000 		call	__printf_chk	#
+ 176      00
+ 177              	.LVL14:
+ 178              	.LBE13:
+ 179              	.LBE12:
+  16:strlentest.c  ****         return -1;
+ 180              		.loc 1 16 0
+ 181 002d 83C8FF   		orl	$-1, %eax	#, D.2364
+ 182 0030 EBE2     		jmp	.L8	#
+ 183              		.cfi_endproc
+ 184              	.LFE35:
+ 186              		.text
+ 187              	.Letext0:
+ 188              		.file 3 "/usr/lib/gcc/x86_64-linux-gnu/4.7/include/stddef.h"
+ 189              		.file 4 "/usr/include/x86_64-linux-gnu/bits/types.h"
+ 190              		.file 5 "/usr/include/libio.h"
+ 191              		.file 6 "/usr/include/stdio.h"
+ 192              		.file 7 "/usr/include/string.h"
