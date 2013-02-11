@@ -1,122 +1,492 @@
    1              		.file	"strlentest.c"
-   2              	# GNU C (Ubuntu/Linaro 4.7.2-2ubuntu1) version 4.7.2 (x86_64-linux-gnu)
+   2              	# GNU C++ (Ubuntu/Linaro 4.7.2-2ubuntu1) version 4.7.2 (x86_64-linux-gnu)
    3              	#	compiled by GNU C version 4.7.2, GMP version 5.0.2, MPFR version 3.1.0-p3, MPC version 0.9
    4              	# GGC heuristics: --param ggc-min-expand=98 --param ggc-min-heapsize=127367
-   5              	# options passed:  -imultiarch x86_64-linux-gnu strlentest.c -mtune=generic
-   6              	# -march=x86-64 -g -O3 -std=c99 -fverbose-asm -fstack-protector
-   7              	# options enabled:  -fasynchronous-unwind-tables -fauto-inc-dec
-   8              	# -fbranch-count-reg -fcaller-saves -fcombine-stack-adjustments -fcommon
-   9              	# -fcompare-elim -fcprop-registers -fcrossjumping -fcse-follow-jumps
-  10              	# -fdebug-types-section -fdefer-pop -fdelete-null-pointer-checks
-  11              	# -fdevirtualize -fdwarf2-cfi-asm -fearly-inlining
-  12              	# -feliminate-unused-debug-types -fexpensive-optimizations
-  13              	# -fforward-propagate -ffunction-cse -fgcse -fgcse-after-reload -fgcse-lm
-  14              	# -fgnu-runtime -fguess-branch-probability -fident -fif-conversion
-  15              	# -fif-conversion2 -findirect-inlining -finline -finline-atomics
-  16              	# -finline-functions -finline-functions-called-once
-  17              	# -finline-small-functions -fipa-cp -fipa-cp-clone -fipa-profile
-  18              	# -fipa-pure-const -fipa-reference -fipa-sra -fira-share-save-slots
-  19              	# -fira-share-spill-slots -fivopts -fkeep-static-consts
-  20              	# -fleading-underscore -fmath-errno -fmerge-constants -fmerge-debug-strings
-  21              	# -fmove-loop-invariants -fomit-frame-pointer -foptimize-register-move
-  22              	# -foptimize-sibling-calls -foptimize-strlen -fpartial-inlining -fpeephole
-  23              	# -fpeephole2 -fpredictive-commoning -fprefetch-loop-arrays -free
-  24              	# -freg-struct-return -fregmove -freorder-blocks -freorder-functions
-  25              	# -frerun-cse-after-loop -fsched-critical-path-heuristic
-  26              	# -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
-  27              	# -fsched-last-insn-heuristic -fsched-rank-heuristic -fsched-spec
-  28              	# -fsched-spec-insn-heuristic -fsched-stalled-insns-dep -fschedule-insns2
-  29              	# -fshow-column -fshrink-wrap -fsigned-zeros -fsplit-ivs-in-unroller
-  30              	# -fsplit-wide-types -fstack-protector -fstrict-aliasing -fstrict-overflow
-  31              	# -fstrict-volatile-bitfields -fthread-jumps -ftoplevel-reorder
-  32              	# -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce -ftree-ccp
-  33              	# -ftree-ch -ftree-copy-prop -ftree-copyrename -ftree-cselim -ftree-dce
-  34              	# -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
-  35              	# -ftree-loop-distribute-patterns -ftree-loop-if-convert -ftree-loop-im
-  36              	# -ftree-loop-ivcanon -ftree-loop-optimize -ftree-parallelize-loops=
-  37              	# -ftree-partial-pre -ftree-phiprop -ftree-pre -ftree-pta -ftree-reassoc
-  38              	# -ftree-scev-cprop -ftree-sink -ftree-slp-vectorize -ftree-sra
-  39              	# -ftree-switch-conversion -ftree-tail-merge -ftree-ter
-  40              	# -ftree-vect-loop-version -ftree-vectorize -ftree-vrp -funit-at-a-time
-  41              	# -funswitch-loops -funwind-tables -fvar-tracking
-  42              	# -fvar-tracking-assignments -fvect-cost-model -fverbose-asm
-  43              	# -fzero-initialized-in-bss -m128bit-long-double -m64 -m80387
-  44              	# -maccumulate-outgoing-args -malign-stringops -mfancy-math-387
-  45              	# -mfp-ret-in-387 -mglibc -mieee-fp -mmmx -mno-sse4 -mpush-args -mred-zone
-  46              	# -msse -msse2 -mtls-direct-seg-refs
-  47              	
-  48              		.text
-  49              	.Ltext0:
-  50              		.section	.rodata.str1.1,"aMS",@progbits,1
-  51              	.LC0:
-  52 0000 55736167 		.string	"Usage: %s string\n"
-  52      653A2025 
-  52      73207374 
-  52      72696E67 
-  52      0A00
-  53              	.LC1:
-  54 0012 25630A00 		.string	"%c\n"
-  55              		.section	.text.startup,"ax",@progbits
-  56              		.p2align 4,,15
-  57              		.globl	main
-  59              	main:
-  60              	.LFB34:
-  61              		.file 1 "strlentest.c"
-   1:strlentest.c  **** #include <stdio.h>
-   2:strlentest.c  **** #include <string.h>
+   5              	# options passed:  -imultiarch x86_64-linux-gnu -D_GNU_SOURCE strlentest.c
+   6              	# -mtune=generic -march=x86-64 -g -O3 -std=c++11 -fverbose-asm
+   7              	# -fstack-protector
+   8              	# options enabled:  -fasynchronous-unwind-tables -fauto-inc-dec
+   9              	# -fbranch-count-reg -fcaller-saves -fcombine-stack-adjustments -fcommon
+  10              	# -fcompare-elim -fcprop-registers -fcrossjumping -fcse-follow-jumps
+  11              	# -fdebug-types-section -fdefer-pop -fdelete-null-pointer-checks
+  12              	# -fdevirtualize -fdwarf2-cfi-asm -fearly-inlining
+  13              	# -feliminate-unused-debug-types -fexceptions -fexpensive-optimizations
+  14              	# -fforward-propagate -ffunction-cse -fgcse -fgcse-after-reload -fgcse-lm
+  15              	# -fgnu-runtime -fguess-branch-probability -fident -fif-conversion
+  16              	# -fif-conversion2 -findirect-inlining -finline -finline-atomics
+  17              	# -finline-functions -finline-functions-called-once
+  18              	# -finline-small-functions -fipa-cp -fipa-cp-clone -fipa-profile
+  19              	# -fipa-pure-const -fipa-reference -fipa-sra -fira-share-save-slots
+  20              	# -fira-share-spill-slots -fivopts -fkeep-static-consts
+  21              	# -fleading-underscore -fmath-errno -fmerge-constants -fmerge-debug-strings
+  22              	# -fmove-loop-invariants -fomit-frame-pointer -foptimize-register-move
+  23              	# -foptimize-sibling-calls -foptimize-strlen -fpartial-inlining -fpeephole
+  24              	# -fpeephole2 -fpredictive-commoning -fprefetch-loop-arrays -free
+  25              	# -freg-struct-return -fregmove -freorder-blocks -freorder-functions
+  26              	# -frerun-cse-after-loop -fsched-critical-path-heuristic
+  27              	# -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
+  28              	# -fsched-last-insn-heuristic -fsched-rank-heuristic -fsched-spec
+  29              	# -fsched-spec-insn-heuristic -fsched-stalled-insns-dep -fschedule-insns2
+  30              	# -fshow-column -fshrink-wrap -fsigned-zeros -fsplit-ivs-in-unroller
+  31              	# -fsplit-wide-types -fstack-protector -fstrict-aliasing -fstrict-overflow
+  32              	# -fstrict-volatile-bitfields -fthread-jumps -ftoplevel-reorder
+  33              	# -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce -ftree-ccp
+  34              	# -ftree-ch -ftree-copy-prop -ftree-copyrename -ftree-cselim -ftree-dce
+  35              	# -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+  36              	# -ftree-loop-distribute-patterns -ftree-loop-if-convert -ftree-loop-im
+  37              	# -ftree-loop-ivcanon -ftree-loop-optimize -ftree-parallelize-loops=
+  38              	# -ftree-partial-pre -ftree-phiprop -ftree-pre -ftree-pta -ftree-reassoc
+  39              	# -ftree-scev-cprop -ftree-sink -ftree-slp-vectorize -ftree-sra
+  40              	# -ftree-switch-conversion -ftree-tail-merge -ftree-ter
+  41              	# -ftree-vect-loop-version -ftree-vectorize -ftree-vrp -funit-at-a-time
+  42              	# -funswitch-loops -funwind-tables -fvar-tracking
+  43              	# -fvar-tracking-assignments -fvect-cost-model -fverbose-asm
+  44              	# -fzero-initialized-in-bss -m128bit-long-double -m64 -m80387
+  45              	# -maccumulate-outgoing-args -malign-stringops -mfancy-math-387
+  46              	# -mfp-ret-in-387 -mglibc -mieee-fp -mmmx -mno-sse4 -mpush-args -mred-zone
+  47              	# -msse -msse2 -mtls-direct-seg-refs
+  48              	
+  49              		.text
+  50              	.Ltext0:
+  51              		.section	.rodata.str1.1,"aMS",@progbits,1
+  52              	.LC0:
+  53 0000 55736167 		.string	"Usage: %s string\n"
+  53      653A2025 
+  53      73207374 
+  53      72696E67 
+  53      0A00
+  54              	.LC1:
+  55 0012 25630A00 		.string	"%c\n"
+  56              		.section	.text.startup,"ax",@progbits
+  57              		.p2align 4,,15
+  58              		.globl	main
+  60              	main:
+  61              	.LFB850:
+  62              		.file 1 "strlentest.c"
+   1:strlentest.c  **** #include <cstdio>
+   2:strlentest.c  **** #include <string>
    3:strlentest.c  **** #include "rdtsc.h"
    4:strlentest.c  **** 
    5:strlentest.c  **** typedef unsigned long long ull;
    6:strlentest.c  **** 
    7:strlentest.c  **** int main(int argc, char** argv) {
-  62              		.loc 1 7 0
-  63              		.cfi_startproc
-  64              	.LVL0:
-  65 0000 4154     		pushq	%r12	#
-  66              	.LCFI0:
-  67              		.cfi_def_cfa_offset 16
-  68              		.cfi_offset 12, -16
-   8:strlentest.c  ****     if (argc != 2) {
-  69              		.loc 1 8 0
-  70 0002 83FF02   		cmpl	$2, %edi	#, argc
-   7:strlentest.c  **** int main(int argc, char** argv) {
-  71              		.loc 1 7 0
-  72 0005 55       		pushq	%rbp	#
+  63              		.loc 1 7 0
+  64              		.cfi_startproc
+  65              		.cfi_personality 0x3,__gxx_personality_v0
+  66              		.cfi_lsda 0x3,.LLSDA850
+  67              	.LVL0:
+  68 0000 55       		pushq	%rbp	#
+  69              	.LCFI0:
+  70              		.cfi_def_cfa_offset 16
+  71              		.cfi_offset 6, -16
+  72 0001 53       		pushq	%rbx	#
   73              	.LCFI1:
   74              		.cfi_def_cfa_offset 24
-  75              		.cfi_offset 6, -24
-  76 0006 53       		pushq	%rbx	#
+  75              		.cfi_offset 3, -24
+  76 0002 4883EC28 		subq	$40, %rsp	#,
   77              	.LCFI2:
-  78              		.cfi_def_cfa_offset 32
-  79              		.cfi_offset 3, -32
+  78              		.cfi_def_cfa_offset 64
+  79              	.LBB93:
+   8:strlentest.c  ****     if (argc != 2) {
   80              		.loc 1 8 0
-  81 0007 753E     		jne	.L8	#,
+  81 0006 83FF02   		cmpl	$2, %edi	#, argc
+  82 0009 7573     		jne	.L18	#,
+  83              	.LVL1:
    9:strlentest.c  ****         printf("Usage: %s string\n", argv[0]);
   10:strlentest.c  ****         return -1;
   11:strlentest.c  ****     }
   12:strlentest.c  **** 
-  13:strlentest.c  ****     const char* k = argv[1];
-  82              		.loc 1 13 0
-  83 0009 4C8B6608 		movq	8(%rsi), %r12	# MEM[(char * *)argv_4(D) + 8B], k
-  84              	.LVL1:
-  85              	.LBB7:
+  13:strlentest.c  ****     std::string k(argv[1]);
+  84              		.loc 1 13 0
+  85 000b 488B7608 		movq	8(%rsi), %rsi	# MEM[(char * *)argv_4(D) + 8B], MEM[(char * *)argv_4(D) + 8B]
+  86              	.LVL2:
+  87 000f 488D5424 		leaq	15(%rsp), %rdx	#,
+  87      0F
+  88              	.LVL3:
+  89 0014 488D7C24 		leaq	16(%rsp), %rdi	#,
+  89      10
+  90              	.LVL4:
+  91              	.LBB94:
   14:strlentest.c  **** 
-  15:strlentest.c  ****     for (unsigned int i=0; i<strlen(k); i++) {
-  86              		.loc 1 15 0
-  87 000d 31DB     		xorl	%ebx, %ebx	# i
-  88 000f EB20     		jmp	.L4	#
-  89              	.LVL2:
-  90              		.p2align 4,,10
-  91 0011 0F1F8000 		.p2align 3
-  91      000000
-  92              	.L5:
+  15:strlentest.c  ****     for (unsigned int i=0; i<k.length(); i++) {
+  92              		.loc 1 15 0
+  93 0019 31DB     		xorl	%ebx, %ebx	# D.22016
+  94 001b 31ED     		xorl	%ebp, %ebp	# i
+  95              	.LEHB0:
+  96              	.LBE94:
+  13:strlentest.c  ****     std::string k(argv[1]);
+  97              		.loc 1 13 0
+  98 001d E8000000 		call	_ZNSsC1EPKcRKSaIcE	#
+  98      00
+  99              	.LEHE0:
+ 100              	.LVL5:
+ 101              	.LBB111:
+ 102              	.LBB95:
+ 103              	.LBB96:
+ 104              	.LBB97:
+ 105              	.LBB98:
+ 106              	.LBB99:
+ 107              		.file 2 "/usr/include/c++/4.7/bits/basic_string.h"
+   1:/usr/include/c++/4.7/bits/basic_string.h **** // Components for manipulating sequences of characters -*- C++ -*-
+   2:/usr/include/c++/4.7/bits/basic_string.h **** 
+   3:/usr/include/c++/4.7/bits/basic_string.h **** // Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
+   4:/usr/include/c++/4.7/bits/basic_string.h **** // 2006, 2007, 2008, 2009, 2010, 2011
+   5:/usr/include/c++/4.7/bits/basic_string.h **** // Free Software Foundation, Inc.
+   6:/usr/include/c++/4.7/bits/basic_string.h **** //
+   7:/usr/include/c++/4.7/bits/basic_string.h **** // This file is part of the GNU ISO C++ Library.  This library is free
+   8:/usr/include/c++/4.7/bits/basic_string.h **** // software; you can redistribute it and/or modify it under the
+   9:/usr/include/c++/4.7/bits/basic_string.h **** // terms of the GNU General Public License as published by the
+  10:/usr/include/c++/4.7/bits/basic_string.h **** // Free Software Foundation; either version 3, or (at your option)
+  11:/usr/include/c++/4.7/bits/basic_string.h **** // any later version.
+  12:/usr/include/c++/4.7/bits/basic_string.h **** 
+  13:/usr/include/c++/4.7/bits/basic_string.h **** // This library is distributed in the hope that it will be useful,
+  14:/usr/include/c++/4.7/bits/basic_string.h **** // but WITHOUT ANY WARRANTY; without even the implied warranty of
+  15:/usr/include/c++/4.7/bits/basic_string.h **** // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  16:/usr/include/c++/4.7/bits/basic_string.h **** // GNU General Public License for more details.
+  17:/usr/include/c++/4.7/bits/basic_string.h **** 
+  18:/usr/include/c++/4.7/bits/basic_string.h **** // Under Section 7 of GPL version 3, you are granted additional
+  19:/usr/include/c++/4.7/bits/basic_string.h **** // permissions described in the GCC Runtime Library Exception, version
+  20:/usr/include/c++/4.7/bits/basic_string.h **** // 3.1, as published by the Free Software Foundation.
+  21:/usr/include/c++/4.7/bits/basic_string.h **** 
+  22:/usr/include/c++/4.7/bits/basic_string.h **** // You should have received a copy of the GNU General Public License and
+  23:/usr/include/c++/4.7/bits/basic_string.h **** // a copy of the GCC Runtime Library Exception along with this program;
+  24:/usr/include/c++/4.7/bits/basic_string.h **** // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+  25:/usr/include/c++/4.7/bits/basic_string.h **** // <http://www.gnu.org/licenses/>.
+  26:/usr/include/c++/4.7/bits/basic_string.h **** 
+  27:/usr/include/c++/4.7/bits/basic_string.h **** /** @file bits/basic_string.h
+  28:/usr/include/c++/4.7/bits/basic_string.h ****  *  This is an internal header file, included by other library headers.
+  29:/usr/include/c++/4.7/bits/basic_string.h ****  *  Do not attempt to use it directly. @headername{string}
+  30:/usr/include/c++/4.7/bits/basic_string.h ****  */
+  31:/usr/include/c++/4.7/bits/basic_string.h **** 
+  32:/usr/include/c++/4.7/bits/basic_string.h **** //
+  33:/usr/include/c++/4.7/bits/basic_string.h **** // ISO C++ 14882: 21 Strings library
+  34:/usr/include/c++/4.7/bits/basic_string.h **** //
+  35:/usr/include/c++/4.7/bits/basic_string.h **** 
+  36:/usr/include/c++/4.7/bits/basic_string.h **** #ifndef _BASIC_STRING_H
+  37:/usr/include/c++/4.7/bits/basic_string.h **** #define _BASIC_STRING_H 1
+  38:/usr/include/c++/4.7/bits/basic_string.h **** 
+  39:/usr/include/c++/4.7/bits/basic_string.h **** #pragma GCC system_header
+  40:/usr/include/c++/4.7/bits/basic_string.h **** 
+  41:/usr/include/c++/4.7/bits/basic_string.h **** #include <ext/atomicity.h>
+  42:/usr/include/c++/4.7/bits/basic_string.h **** #include <debug/debug.h>
+  43:/usr/include/c++/4.7/bits/basic_string.h **** #ifdef __GXX_EXPERIMENTAL_CXX0X__
+  44:/usr/include/c++/4.7/bits/basic_string.h **** #include <initializer_list>
+  45:/usr/include/c++/4.7/bits/basic_string.h **** #endif
+  46:/usr/include/c++/4.7/bits/basic_string.h **** 
+  47:/usr/include/c++/4.7/bits/basic_string.h **** namespace std _GLIBCXX_VISIBILITY(default)
+  48:/usr/include/c++/4.7/bits/basic_string.h **** {
+  49:/usr/include/c++/4.7/bits/basic_string.h **** _GLIBCXX_BEGIN_NAMESPACE_VERSION
+  50:/usr/include/c++/4.7/bits/basic_string.h **** 
+  51:/usr/include/c++/4.7/bits/basic_string.h ****   /**
+  52:/usr/include/c++/4.7/bits/basic_string.h ****    *  @class basic_string basic_string.h <string>
+  53:/usr/include/c++/4.7/bits/basic_string.h ****    *  @brief  Managing sequences of characters and character-like objects.
+  54:/usr/include/c++/4.7/bits/basic_string.h ****    *
+  55:/usr/include/c++/4.7/bits/basic_string.h ****    *  @ingroup strings
+  56:/usr/include/c++/4.7/bits/basic_string.h ****    *  @ingroup sequences
+  57:/usr/include/c++/4.7/bits/basic_string.h ****    *
+  58:/usr/include/c++/4.7/bits/basic_string.h ****    *  Meets the requirements of a <a href="tables.html#65">container</a>, a
+  59:/usr/include/c++/4.7/bits/basic_string.h ****    *  <a href="tables.html#66">reversible container</a>, and a
+  60:/usr/include/c++/4.7/bits/basic_string.h ****    *  <a href="tables.html#67">sequence</a>.  Of the
+  61:/usr/include/c++/4.7/bits/basic_string.h ****    *  <a href="tables.html#68">optional sequence requirements</a>, only
+  62:/usr/include/c++/4.7/bits/basic_string.h ****    *  @c push_back, @c at, and @c %array access are supported.
+  63:/usr/include/c++/4.7/bits/basic_string.h ****    *
+  64:/usr/include/c++/4.7/bits/basic_string.h ****    *  @doctodo
+  65:/usr/include/c++/4.7/bits/basic_string.h ****    *
+  66:/usr/include/c++/4.7/bits/basic_string.h ****    *
+  67:/usr/include/c++/4.7/bits/basic_string.h ****    *  Documentation?  What's that?
+  68:/usr/include/c++/4.7/bits/basic_string.h ****    *  Nathan Myers <ncm@cantrip.org>.
+  69:/usr/include/c++/4.7/bits/basic_string.h ****    *
+  70:/usr/include/c++/4.7/bits/basic_string.h ****    *  A string looks like this:
+  71:/usr/include/c++/4.7/bits/basic_string.h ****    *
+  72:/usr/include/c++/4.7/bits/basic_string.h ****    *  @code
+  73:/usr/include/c++/4.7/bits/basic_string.h ****    *                                        [_Rep]
+  74:/usr/include/c++/4.7/bits/basic_string.h ****    *                                        _M_length
+  75:/usr/include/c++/4.7/bits/basic_string.h ****    *   [basic_string<char_type>]            _M_capacity
+  76:/usr/include/c++/4.7/bits/basic_string.h ****    *   _M_dataplus                          _M_refcount
+  77:/usr/include/c++/4.7/bits/basic_string.h ****    *   _M_p ---------------->               unnamed array of char_type
+  78:/usr/include/c++/4.7/bits/basic_string.h ****    *  @endcode
+  79:/usr/include/c++/4.7/bits/basic_string.h ****    *
+  80:/usr/include/c++/4.7/bits/basic_string.h ****    *  Where the _M_p points to the first character in the string, and
+  81:/usr/include/c++/4.7/bits/basic_string.h ****    *  you cast it to a pointer-to-_Rep and subtract 1 to get a
+  82:/usr/include/c++/4.7/bits/basic_string.h ****    *  pointer to the header.
+  83:/usr/include/c++/4.7/bits/basic_string.h ****    *
+  84:/usr/include/c++/4.7/bits/basic_string.h ****    *  This approach has the enormous advantage that a string object
+  85:/usr/include/c++/4.7/bits/basic_string.h ****    *  requires only one allocation.  All the ugliness is confined
+  86:/usr/include/c++/4.7/bits/basic_string.h ****    *  within a single %pair of inline functions, which each compile to
+  87:/usr/include/c++/4.7/bits/basic_string.h ****    *  a single @a add instruction: _Rep::_M_data(), and
+  88:/usr/include/c++/4.7/bits/basic_string.h ****    *  string::_M_rep(); and the allocation function which gets a
+  89:/usr/include/c++/4.7/bits/basic_string.h ****    *  block of raw bytes and with room enough and constructs a _Rep
+  90:/usr/include/c++/4.7/bits/basic_string.h ****    *  object at the front.
+  91:/usr/include/c++/4.7/bits/basic_string.h ****    *
+  92:/usr/include/c++/4.7/bits/basic_string.h ****    *  The reason you want _M_data pointing to the character %array and
+  93:/usr/include/c++/4.7/bits/basic_string.h ****    *  not the _Rep is so that the debugger can see the string
+  94:/usr/include/c++/4.7/bits/basic_string.h ****    *  contents. (Probably we should add a non-inline member to get
+  95:/usr/include/c++/4.7/bits/basic_string.h ****    *  the _Rep for the debugger to use, so users can check the actual
+  96:/usr/include/c++/4.7/bits/basic_string.h ****    *  string length.)
+  97:/usr/include/c++/4.7/bits/basic_string.h ****    *
+  98:/usr/include/c++/4.7/bits/basic_string.h ****    *  Note that the _Rep object is a POD so that you can have a
+  99:/usr/include/c++/4.7/bits/basic_string.h ****    *  static <em>empty string</em> _Rep object already @a constructed before
+ 100:/usr/include/c++/4.7/bits/basic_string.h ****    *  static constructors have run.  The reference-count encoding is
+ 101:/usr/include/c++/4.7/bits/basic_string.h ****    *  chosen so that a 0 indicates one reference, so you never try to
+ 102:/usr/include/c++/4.7/bits/basic_string.h ****    *  destroy the empty-string _Rep object.
+ 103:/usr/include/c++/4.7/bits/basic_string.h ****    *
+ 104:/usr/include/c++/4.7/bits/basic_string.h ****    *  All but the last paragraph is considered pretty conventional
+ 105:/usr/include/c++/4.7/bits/basic_string.h ****    *  for a C++ string implementation.
+ 106:/usr/include/c++/4.7/bits/basic_string.h ****   */
+ 107:/usr/include/c++/4.7/bits/basic_string.h ****   // 21.3  Template class basic_string
+ 108:/usr/include/c++/4.7/bits/basic_string.h ****   template<typename _CharT, typename _Traits, typename _Alloc>
+ 109:/usr/include/c++/4.7/bits/basic_string.h ****     class basic_string
+ 110:/usr/include/c++/4.7/bits/basic_string.h ****     {
+ 111:/usr/include/c++/4.7/bits/basic_string.h ****       typedef typename _Alloc::template rebind<_CharT>::other _CharT_alloc_type;
+ 112:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 113:/usr/include/c++/4.7/bits/basic_string.h ****       // Types:
+ 114:/usr/include/c++/4.7/bits/basic_string.h ****     public:
+ 115:/usr/include/c++/4.7/bits/basic_string.h ****       typedef _Traits					    traits_type;
+ 116:/usr/include/c++/4.7/bits/basic_string.h ****       typedef typename _Traits::char_type		    value_type;
+ 117:/usr/include/c++/4.7/bits/basic_string.h ****       typedef _Alloc					    allocator_type;
+ 118:/usr/include/c++/4.7/bits/basic_string.h ****       typedef typename _CharT_alloc_type::size_type	    size_type;
+ 119:/usr/include/c++/4.7/bits/basic_string.h ****       typedef typename _CharT_alloc_type::difference_type   difference_type;
+ 120:/usr/include/c++/4.7/bits/basic_string.h ****       typedef typename _CharT_alloc_type::reference	    reference;
+ 121:/usr/include/c++/4.7/bits/basic_string.h ****       typedef typename _CharT_alloc_type::const_reference   const_reference;
+ 122:/usr/include/c++/4.7/bits/basic_string.h ****       typedef typename _CharT_alloc_type::pointer	    pointer;
+ 123:/usr/include/c++/4.7/bits/basic_string.h ****       typedef typename _CharT_alloc_type::const_pointer	    const_pointer;
+ 124:/usr/include/c++/4.7/bits/basic_string.h ****       typedef __gnu_cxx::__normal_iterator<pointer, basic_string>  iterator;
+ 125:/usr/include/c++/4.7/bits/basic_string.h ****       typedef __gnu_cxx::__normal_iterator<const_pointer, basic_string>
+ 126:/usr/include/c++/4.7/bits/basic_string.h ****                                                             const_iterator;
+ 127:/usr/include/c++/4.7/bits/basic_string.h ****       typedef std::reverse_iterator<const_iterator>	const_reverse_iterator;
+ 128:/usr/include/c++/4.7/bits/basic_string.h ****       typedef std::reverse_iterator<iterator>		    reverse_iterator;
+ 129:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 130:/usr/include/c++/4.7/bits/basic_string.h ****     private:
+ 131:/usr/include/c++/4.7/bits/basic_string.h ****       // _Rep: string representation
+ 132:/usr/include/c++/4.7/bits/basic_string.h ****       //   Invariants:
+ 133:/usr/include/c++/4.7/bits/basic_string.h ****       //   1. String really contains _M_length + 1 characters: due to 21.3.4
+ 134:/usr/include/c++/4.7/bits/basic_string.h ****       //      must be kept null-terminated.
+ 135:/usr/include/c++/4.7/bits/basic_string.h ****       //   2. _M_capacity >= _M_length
+ 136:/usr/include/c++/4.7/bits/basic_string.h ****       //      Allocated memory is always (_M_capacity + 1) * sizeof(_CharT).
+ 137:/usr/include/c++/4.7/bits/basic_string.h ****       //   3. _M_refcount has three states:
+ 138:/usr/include/c++/4.7/bits/basic_string.h ****       //      -1: leaked, one reference, no ref-copies allowed, non-const.
+ 139:/usr/include/c++/4.7/bits/basic_string.h ****       //       0: one reference, non-const.
+ 140:/usr/include/c++/4.7/bits/basic_string.h ****       //     n>0: n + 1 references, operations require a lock, const.
+ 141:/usr/include/c++/4.7/bits/basic_string.h ****       //   4. All fields==0 is an empty string, given the extra storage
+ 142:/usr/include/c++/4.7/bits/basic_string.h ****       //      beyond-the-end for a null terminator; thus, the shared
+ 143:/usr/include/c++/4.7/bits/basic_string.h ****       //      empty string representation needs no constructor.
+ 144:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 145:/usr/include/c++/4.7/bits/basic_string.h ****       struct _Rep_base
+ 146:/usr/include/c++/4.7/bits/basic_string.h ****       {
+ 147:/usr/include/c++/4.7/bits/basic_string.h **** 	size_type		_M_length;
+ 148:/usr/include/c++/4.7/bits/basic_string.h **** 	size_type		_M_capacity;
+ 149:/usr/include/c++/4.7/bits/basic_string.h **** 	_Atomic_word		_M_refcount;
+ 150:/usr/include/c++/4.7/bits/basic_string.h ****       };
+ 151:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 152:/usr/include/c++/4.7/bits/basic_string.h ****       struct _Rep : _Rep_base
+ 153:/usr/include/c++/4.7/bits/basic_string.h ****       {
+ 154:/usr/include/c++/4.7/bits/basic_string.h **** 	// Types:
+ 155:/usr/include/c++/4.7/bits/basic_string.h **** 	typedef typename _Alloc::template rebind<char>::other _Raw_bytes_alloc;
+ 156:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 157:/usr/include/c++/4.7/bits/basic_string.h **** 	// (Public) Data members:
+ 158:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 159:/usr/include/c++/4.7/bits/basic_string.h **** 	// The maximum number of individual char_type elements of an
+ 160:/usr/include/c++/4.7/bits/basic_string.h **** 	// individual string is determined by _S_max_size. This is the
+ 161:/usr/include/c++/4.7/bits/basic_string.h **** 	// value that will be returned by max_size().  (Whereas npos
+ 162:/usr/include/c++/4.7/bits/basic_string.h **** 	// is the maximum number of bytes the allocator can allocate.)
+ 163:/usr/include/c++/4.7/bits/basic_string.h **** 	// If one was to divvy up the theoretical largest size string,
+ 164:/usr/include/c++/4.7/bits/basic_string.h **** 	// with a terminating character and m _CharT elements, it'd
+ 165:/usr/include/c++/4.7/bits/basic_string.h **** 	// look like this:
+ 166:/usr/include/c++/4.7/bits/basic_string.h **** 	// npos = sizeof(_Rep) + (m * sizeof(_CharT)) + sizeof(_CharT)
+ 167:/usr/include/c++/4.7/bits/basic_string.h **** 	// Solving for m:
+ 168:/usr/include/c++/4.7/bits/basic_string.h **** 	// m = ((npos - sizeof(_Rep))/sizeof(CharT)) - 1
+ 169:/usr/include/c++/4.7/bits/basic_string.h **** 	// In addition, this implementation quarters this amount.
+ 170:/usr/include/c++/4.7/bits/basic_string.h **** 	static const size_type	_S_max_size;
+ 171:/usr/include/c++/4.7/bits/basic_string.h **** 	static const _CharT	_S_terminal;
+ 172:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 173:/usr/include/c++/4.7/bits/basic_string.h **** 	// The following storage is init'd to 0 by the linker, resulting
+ 174:/usr/include/c++/4.7/bits/basic_string.h ****         // (carefully) in an empty string with one reference.
+ 175:/usr/include/c++/4.7/bits/basic_string.h ****         static size_type _S_empty_rep_storage[];
+ 176:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 177:/usr/include/c++/4.7/bits/basic_string.h ****         static _Rep&
+ 178:/usr/include/c++/4.7/bits/basic_string.h ****         _S_empty_rep()
+ 179:/usr/include/c++/4.7/bits/basic_string.h ****         { 
+ 180:/usr/include/c++/4.7/bits/basic_string.h **** 	  // NB: Mild hack to avoid strict-aliasing warnings.  Note that
+ 181:/usr/include/c++/4.7/bits/basic_string.h **** 	  // _S_empty_rep_storage is never modified and the punning should
+ 182:/usr/include/c++/4.7/bits/basic_string.h **** 	  // be reasonably safe in this case.
+ 183:/usr/include/c++/4.7/bits/basic_string.h **** 	  void* __p = reinterpret_cast<void*>(&_S_empty_rep_storage);
+ 184:/usr/include/c++/4.7/bits/basic_string.h **** 	  return *reinterpret_cast<_Rep*>(__p);
+ 185:/usr/include/c++/4.7/bits/basic_string.h **** 	}
+ 186:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 187:/usr/include/c++/4.7/bits/basic_string.h ****         bool
+ 188:/usr/include/c++/4.7/bits/basic_string.h **** 	_M_is_leaked() const
+ 189:/usr/include/c++/4.7/bits/basic_string.h ****         { return this->_M_refcount < 0; }
+ 190:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 191:/usr/include/c++/4.7/bits/basic_string.h ****         bool
+ 192:/usr/include/c++/4.7/bits/basic_string.h **** 	_M_is_shared() const
+ 193:/usr/include/c++/4.7/bits/basic_string.h ****         { return this->_M_refcount > 0; }
+ 194:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 195:/usr/include/c++/4.7/bits/basic_string.h ****         void
+ 196:/usr/include/c++/4.7/bits/basic_string.h **** 	_M_set_leaked()
+ 197:/usr/include/c++/4.7/bits/basic_string.h ****         { this->_M_refcount = -1; }
+ 198:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 199:/usr/include/c++/4.7/bits/basic_string.h ****         void
+ 200:/usr/include/c++/4.7/bits/basic_string.h **** 	_M_set_sharable()
+ 201:/usr/include/c++/4.7/bits/basic_string.h ****         { this->_M_refcount = 0; }
+ 202:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 203:/usr/include/c++/4.7/bits/basic_string.h **** 	void
+ 204:/usr/include/c++/4.7/bits/basic_string.h **** 	_M_set_length_and_sharable(size_type __n)
+ 205:/usr/include/c++/4.7/bits/basic_string.h **** 	{
+ 206:/usr/include/c++/4.7/bits/basic_string.h **** #if _GLIBCXX_FULLY_DYNAMIC_STRING == 0
+ 207:/usr/include/c++/4.7/bits/basic_string.h **** 	  if (__builtin_expect(this != &_S_empty_rep(), false))
+ 208:/usr/include/c++/4.7/bits/basic_string.h **** #endif
+ 209:/usr/include/c++/4.7/bits/basic_string.h **** 	    {
+ 210:/usr/include/c++/4.7/bits/basic_string.h **** 	      this->_M_set_sharable();  // One reference.
+ 211:/usr/include/c++/4.7/bits/basic_string.h **** 	      this->_M_length = __n;
+ 212:/usr/include/c++/4.7/bits/basic_string.h **** 	      traits_type::assign(this->_M_refdata()[__n], _S_terminal);
+ 213:/usr/include/c++/4.7/bits/basic_string.h **** 	      // grrr. (per 21.3.4)
+ 214:/usr/include/c++/4.7/bits/basic_string.h **** 	      // You cannot leave those LWG people alone for a second.
+ 215:/usr/include/c++/4.7/bits/basic_string.h **** 	    }
+ 216:/usr/include/c++/4.7/bits/basic_string.h **** 	}
+ 217:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 218:/usr/include/c++/4.7/bits/basic_string.h **** 	_CharT*
+ 219:/usr/include/c++/4.7/bits/basic_string.h **** 	_M_refdata() throw()
+ 220:/usr/include/c++/4.7/bits/basic_string.h **** 	{ return reinterpret_cast<_CharT*>(this + 1); }
+ 221:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 222:/usr/include/c++/4.7/bits/basic_string.h **** 	_CharT*
+ 223:/usr/include/c++/4.7/bits/basic_string.h **** 	_M_grab(const _Alloc& __alloc1, const _Alloc& __alloc2)
+ 224:/usr/include/c++/4.7/bits/basic_string.h **** 	{
+ 225:/usr/include/c++/4.7/bits/basic_string.h **** 	  return (!_M_is_leaked() && __alloc1 == __alloc2)
+ 226:/usr/include/c++/4.7/bits/basic_string.h **** 	          ? _M_refcopy() : _M_clone(__alloc1);
+ 227:/usr/include/c++/4.7/bits/basic_string.h **** 	}
+ 228:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 229:/usr/include/c++/4.7/bits/basic_string.h **** 	// Create & Destroy
+ 230:/usr/include/c++/4.7/bits/basic_string.h **** 	static _Rep*
+ 231:/usr/include/c++/4.7/bits/basic_string.h **** 	_S_create(size_type, size_type, const _Alloc&);
+ 232:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 233:/usr/include/c++/4.7/bits/basic_string.h **** 	void
+ 234:/usr/include/c++/4.7/bits/basic_string.h **** 	_M_dispose(const _Alloc& __a)
+ 235:/usr/include/c++/4.7/bits/basic_string.h **** 	{
+ 236:/usr/include/c++/4.7/bits/basic_string.h **** #if _GLIBCXX_FULLY_DYNAMIC_STRING == 0
+ 237:/usr/include/c++/4.7/bits/basic_string.h **** 	  if (__builtin_expect(this != &_S_empty_rep(), false))
+ 238:/usr/include/c++/4.7/bits/basic_string.h **** #endif
+ 239:/usr/include/c++/4.7/bits/basic_string.h **** 	    {
+ 240:/usr/include/c++/4.7/bits/basic_string.h **** 	      // Be race-detector-friendly.  For more info see bits/c++config.
+ 241:/usr/include/c++/4.7/bits/basic_string.h **** 	      _GLIBCXX_SYNCHRONIZATION_HAPPENS_BEFORE(&this->_M_refcount);
+ 242:/usr/include/c++/4.7/bits/basic_string.h **** 	      if (__gnu_cxx::__exchange_and_add_dispatch(&this->_M_refcount,
+ 243:/usr/include/c++/4.7/bits/basic_string.h **** 							 -1) <= 0)
+ 244:/usr/include/c++/4.7/bits/basic_string.h **** 		{
+ 245:/usr/include/c++/4.7/bits/basic_string.h **** 		  _GLIBCXX_SYNCHRONIZATION_HAPPENS_AFTER(&this->_M_refcount);
+ 246:/usr/include/c++/4.7/bits/basic_string.h **** 		  _M_destroy(__a);
+ 247:/usr/include/c++/4.7/bits/basic_string.h **** 		}
+ 248:/usr/include/c++/4.7/bits/basic_string.h **** 	    }
+ 249:/usr/include/c++/4.7/bits/basic_string.h **** 	}  // XXX MT
+ 250:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 251:/usr/include/c++/4.7/bits/basic_string.h **** 	void
+ 252:/usr/include/c++/4.7/bits/basic_string.h **** 	_M_destroy(const _Alloc&) throw();
+ 253:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 254:/usr/include/c++/4.7/bits/basic_string.h **** 	_CharT*
+ 255:/usr/include/c++/4.7/bits/basic_string.h **** 	_M_refcopy() throw()
+ 256:/usr/include/c++/4.7/bits/basic_string.h **** 	{
+ 257:/usr/include/c++/4.7/bits/basic_string.h **** #if _GLIBCXX_FULLY_DYNAMIC_STRING == 0
+ 258:/usr/include/c++/4.7/bits/basic_string.h **** 	  if (__builtin_expect(this != &_S_empty_rep(), false))
+ 259:/usr/include/c++/4.7/bits/basic_string.h **** #endif
+ 260:/usr/include/c++/4.7/bits/basic_string.h ****             __gnu_cxx::__atomic_add_dispatch(&this->_M_refcount, 1);
+ 261:/usr/include/c++/4.7/bits/basic_string.h **** 	  return _M_refdata();
+ 262:/usr/include/c++/4.7/bits/basic_string.h **** 	}  // XXX MT
+ 263:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 264:/usr/include/c++/4.7/bits/basic_string.h **** 	_CharT*
+ 265:/usr/include/c++/4.7/bits/basic_string.h **** 	_M_clone(const _Alloc&, size_type __res = 0);
+ 266:/usr/include/c++/4.7/bits/basic_string.h ****       };
+ 267:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 268:/usr/include/c++/4.7/bits/basic_string.h ****       // Use empty-base optimization: http://www.cantrip.org/emptyopt.html
+ 269:/usr/include/c++/4.7/bits/basic_string.h ****       struct _Alloc_hider : _Alloc
+ 270:/usr/include/c++/4.7/bits/basic_string.h ****       {
+ 271:/usr/include/c++/4.7/bits/basic_string.h **** 	_Alloc_hider(_CharT* __dat, const _Alloc& __a)
+ 272:/usr/include/c++/4.7/bits/basic_string.h **** 	: _Alloc(__a), _M_p(__dat) { }
+ 273:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 274:/usr/include/c++/4.7/bits/basic_string.h **** 	_CharT* _M_p; // The actual data.
+ 275:/usr/include/c++/4.7/bits/basic_string.h ****       };
+ 276:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 277:/usr/include/c++/4.7/bits/basic_string.h ****     public:
+ 278:/usr/include/c++/4.7/bits/basic_string.h ****       // Data Members (public):
+ 279:/usr/include/c++/4.7/bits/basic_string.h ****       // NB: This is an unsigned type, and thus represents the maximum
+ 280:/usr/include/c++/4.7/bits/basic_string.h ****       // size that the allocator can hold.
+ 281:/usr/include/c++/4.7/bits/basic_string.h ****       ///  Value returned by various member functions when they fail.
+ 282:/usr/include/c++/4.7/bits/basic_string.h ****       static const size_type	npos = static_cast<size_type>(-1);
+ 283:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 284:/usr/include/c++/4.7/bits/basic_string.h ****     private:
+ 285:/usr/include/c++/4.7/bits/basic_string.h ****       // Data Members (private):
+ 286:/usr/include/c++/4.7/bits/basic_string.h ****       mutable _Alloc_hider	_M_dataplus;
+ 287:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 288:/usr/include/c++/4.7/bits/basic_string.h ****       _CharT*
+ 289:/usr/include/c++/4.7/bits/basic_string.h ****       _M_data() const
+ 290:/usr/include/c++/4.7/bits/basic_string.h ****       { return  _M_dataplus._M_p; }
+ 108              		.loc 2 290 0
+ 109 0022 488B4424 		movq	16(%rsp), %rax	# k._M_dataplus._M_p, k._M_dataplus._M_p
+ 109      10
+ 110              	.LBE99:
+ 111              	.LBE98:
+ 112              	.LBE97:
+ 113              	.LBE96:
+ 114              	.LBE95:
+ 115              		.loc 1 15 0
+ 116 0027 488378E8 		cmpq	$0, -24(%rax)	#, MEM[(struct _Rep *)D.22228_48 + -24B].D.20017._M_length
+ 116      00
+ 117 002c 743D     		je	.L8	#,
+ 118              	.LVL6:
+ 119 002e 6690     		.p2align 4,,10
+ 120              		.p2align 3
+ 121              	.L12:
+ 122              	.LBB104:
+ 123              	.LBB105:
+ 124              	.LBB106:
+ 125              	.LBB107:
+ 291:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 292:/usr/include/c++/4.7/bits/basic_string.h ****       _CharT*
+ 293:/usr/include/c++/4.7/bits/basic_string.h ****       _M_data(_CharT* __p)
+ 294:/usr/include/c++/4.7/bits/basic_string.h ****       { return (_M_dataplus._M_p = __p); }
+ 295:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 296:/usr/include/c++/4.7/bits/basic_string.h ****       _Rep*
+ 297:/usr/include/c++/4.7/bits/basic_string.h ****       _M_rep() const
+ 298:/usr/include/c++/4.7/bits/basic_string.h ****       { return &((reinterpret_cast<_Rep*> (_M_data()))[-1]); }
+ 299:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 300:/usr/include/c++/4.7/bits/basic_string.h ****       // For the internal use we have functions similar to `begin'/`end'
+ 301:/usr/include/c++/4.7/bits/basic_string.h ****       // but they do not call _M_leak.
+ 302:/usr/include/c++/4.7/bits/basic_string.h ****       iterator
+ 303:/usr/include/c++/4.7/bits/basic_string.h ****       _M_ibegin() const
+ 304:/usr/include/c++/4.7/bits/basic_string.h ****       { return iterator(_M_data()); }
+ 305:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 306:/usr/include/c++/4.7/bits/basic_string.h ****       iterator
+ 307:/usr/include/c++/4.7/bits/basic_string.h ****       _M_iend() const
+ 308:/usr/include/c++/4.7/bits/basic_string.h ****       { return iterator(_M_data() + this->size()); }
+ 309:/usr/include/c++/4.7/bits/basic_string.h **** 
+ 310:/usr/include/c++/4.7/bits/basic_string.h ****       void
+ 311:/usr/include/c++/4.7/bits/basic_string.h ****       _M_leak()    // for use in begin() & non-const op[]
+ 312:/usr/include/c++/4.7/bits/basic_string.h ****       {
+ 313:/usr/include/c++/4.7/bits/basic_string.h **** 	if (!_M_rep()->_M_is_leaked())
+ 126              		.loc 2 313 0
+ 127 0030 8B50F8   		movl	-8(%rax), %edx	# MEM[(const struct _Rep *)D.22228_60 + -8B],
+ 128 0033 85D2     		testl	%edx, %edx	#
+ 129 0035 780F     		js	.L7	#,
+ 314:/usr/include/c++/4.7/bits/basic_string.h **** 	  _M_leak_hard();
+ 130              		.loc 2 314 0
+ 131 0037 488D7C24 		leaq	16(%rsp), %rdi	#,
+ 131      10
+ 132              	.LVL7:
+ 133              	.LEHB1:
+ 134 003c E8000000 		call	_ZNSs12_M_leak_hardEv	#
+ 134      00
+ 135              	.LVL8:
+ 136 0041 488B4424 		movq	16(%rsp), %rax	# k._M_dataplus._M_p, k._M_dataplus._M_p
+ 136      10
+ 137              	.L7:
+ 138              	.LVL9:
+ 139              	.LBE107:
+ 140              	.LBE106:
+ 141              	.LBE105:
+ 142              	.LBE104:
   16:strlentest.c  ****         printf("%c\n", k[i]);
-  93              		.loc 1 16 0 discriminator 2
-  94 0018 410FBE14 		movsbl	(%r12,%rbp), %edx	# *D.2364_12, *D.2364_12
-  94      2C
-  95              	.LBB8:
-  96              	.LBB9:
-  97              		.file 2 "/usr/include/x86_64-linux-gnu/bits/stdio2.h"
+ 143              		.loc 1 16 0
+ 144 0046 0FBE1418 		movsbl	(%rax,%rbx), %edx	# *D.22222_37, *D.22222_37
+ 145              	.LBB108:
+ 146              	.LBB109:
+ 147              		.file 3 "/usr/include/x86_64-linux-gnu/bits/stdio2.h"
    1:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** /* Checking macros for stdio functions.
    2:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    Copyright (C) 2004, 2005, 2007, 2008 Free Software Foundation, Inc.
    3:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    This file is part of the GNU C Library.
@@ -222,87 +592,172 @@
  103:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** printf (__const char *__restrict __fmt, ...)
  104:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** {
  105:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****   return __printf_chk (__USE_FORTIFY_LEVEL - 1, __fmt, __va_arg_pack ());
-  98              		.loc 2 105 0 discriminator 2
-  99 001d BE000000 		movl	$.LC1, %esi	#,
-  99      00
- 100 0022 BF010000 		movl	$1, %edi	#,
- 100      00
- 101 0027 31C0     		xorl	%eax, %eax	#
- 102              	.LBE9:
- 103              	.LBE8:
-  15:strlentest.c  ****     for (unsigned int i=0; i<strlen(k); i++) {
- 104              		.loc 1 15 0 discriminator 2
- 105 0029 83C301   		addl	$1, %ebx	#, i
- 106              	.LVL3:
- 107              	.LBB11:
- 108              	.LBB10:
- 109              		.loc 2 105 0 discriminator 2
- 110 002c E8000000 		call	__printf_chk	#
- 110      00
- 111              	.LVL4:
- 112              	.L4:
- 113              	.LBE10:
- 114              	.LBE11:
-  15:strlentest.c  ****     for (unsigned int i=0; i<strlen(k); i++) {
- 115              		.loc 1 15 0 discriminator 1
- 116 0031 89DD     		movl	%ebx, %ebp	# i, D.2367
- 117 0033 4C89E7   		movq	%r12, %rdi	# k,
- 118 0036 E8000000 		call	strlen	#
- 118      00
- 119              	.LVL5:
- 120 003b 4839C5   		cmpq	%rax, %rbp	# tmp78, D.2367
- 121 003e 72D8     		jb	.L5	#,
-  17:strlentest.c  ****     }
-  18:strlentest.c  **** 
-  19:strlentest.c  ****     return 0;
- 122              		.loc 1 19 0
- 123 0040 31C0     		xorl	%eax, %eax	# D.2362
- 124              	.LVL6:
- 125              	.L3:
- 126              	.LBE7:
-  20:strlentest.c  **** }
- 127              		.loc 1 20 0
- 128 0042 5B       		popq	%rbx	#
- 129              	.LCFI3:
- 130              		.cfi_remember_state
- 131              		.cfi_def_cfa_offset 24
- 132 0043 5D       		popq	%rbp	#
- 133              	.LCFI4:
- 134              		.cfi_def_cfa_offset 16
- 135 0044 415C     		popq	%r12	#
- 136              	.LCFI5:
- 137              		.cfi_def_cfa_offset 8
- 138 0046 C3       		ret
- 139              	.LVL7:
- 140              	.L8:
- 141              	.LCFI6:
- 142              		.cfi_restore_state
- 143              	.LBB12:
- 144              	.LBB13:
- 145              		.loc 2 105 0
- 146 0047 488B16   		movq	(%rsi), %rdx	# *argv_4(D),
- 147 004a BF010000 		movl	$1, %edi	#,
- 147      00
- 148              	.LVL8:
- 149 004f BE000000 		movl	$.LC0, %esi	#,
+ 148              		.loc 3 105 0
+ 149 004a BE000000 		movl	$.LC1, %esi	#,
  149      00
- 150              	.LVL9:
+ 150 004f BF010000 		movl	$1, %edi	#,
+ 150      00
  151 0054 31C0     		xorl	%eax, %eax	#
  152 0056 E8000000 		call	__printf_chk	#
  152      00
- 153              	.LVL10:
- 154              	.LBE13:
- 155              	.LBE12:
+ 153              	.LEHE1:
+ 154              	.LVL10:
+ 155              	.LBE109:
+ 156              	.LBE108:
+ 157              	.LBB110:
+ 158              	.LBB103:
+ 159              	.LBB102:
+ 160              	.LBB101:
+ 161              	.LBB100:
+ 290:/usr/include/c++/4.7/bits/basic_string.h ****       { return  _M_dataplus._M_p; }
+ 162              		.loc 2 290 0
+ 163 005b 488B4424 		movq	16(%rsp), %rax	# k._M_dataplus._M_p, k._M_dataplus._M_p
+ 163      10
+ 164              	.LBE100:
+ 165              	.LBE101:
+ 166              	.LBE102:
+ 167              	.LBE103:
+ 168              	.LBE110:
+  15:strlentest.c  ****     for (unsigned int i=0; i<k.length(); i++) {
+ 169              		.loc 1 15 0
+ 170 0060 83C501   		addl	$1, %ebp	#, i
+ 171              	.LVL11:
+ 172 0063 89EB     		movl	%ebp, %ebx	# i, D.22016
+ 173              	.LVL12:
+ 174 0065 483B58E8 		cmpq	-24(%rax), %rbx	# MEM[(struct _Rep *)D.22228_39 + -24B].D.20017._M_length, D.22016
+ 175 0069 72C5     		jb	.L12	#,
+ 176              	.LVL13:
+ 177              	.L8:
+ 178              	.LBE111:
+  17:strlentest.c  ****     }
+  18:strlentest.c  **** 
+  19:strlentest.c  ****     return 0;
+ 179              		.loc 1 19 0
+ 180 006b 488D7C24 		leaq	16(%rsp), %rdi	#,
+ 180      10
+ 181              	.LVL14:
+ 182 0070 E8000000 		call	_ZNSsD1Ev	#
+ 182      00
+ 183              	.LVL15:
+ 184 0075 31C0     		xorl	%eax, %eax	# D.22009
+ 185              	.LVL16:
+ 186              	.L14:
+ 187              	.LBE93:
+  20:strlentest.c  **** }
+ 188              		.loc 1 20 0
+ 189 0077 4883C428 		addq	$40, %rsp	#,
+ 190              	.LCFI3:
+ 191              		.cfi_remember_state
+ 192              		.cfi_def_cfa_offset 24
+ 193 007b 5B       		popq	%rbx	#
+ 194              	.LCFI4:
+ 195              		.cfi_def_cfa_offset 16
+ 196 007c 5D       		popq	%rbp	#
+ 197              	.LCFI5:
+ 198              		.cfi_def_cfa_offset 8
+ 199 007d C3       		ret
+ 200              	.LVL17:
+ 201              	.L18:
+ 202              	.LCFI6:
+ 203              		.cfi_restore_state
+ 204              	.LBB114:
+ 205              	.LBB112:
+ 206              	.LBB113:
+ 207              		.loc 3 105 0
+ 208 007e 488B16   		movq	(%rsi), %rdx	# *argv_4(D),
+ 209 0081 BF010000 		movl	$1, %edi	#,
+ 209      00
+ 210              	.LVL18:
+ 211 0086 BE000000 		movl	$.LC0, %esi	#,
+ 211      00
+ 212              	.LVL19:
+ 213 008b 31C0     		xorl	%eax, %eax	#
+ 214              	.LEHB2:
+ 215 008d E8000000 		call	__printf_chk	#
+ 215      00
+ 216              	.LVL20:
   10:strlentest.c  ****         return -1;
- 156              		.loc 1 10 0
- 157 005b 83C8FF   		orl	$-1, %eax	#, D.2362
- 158 005e EBE2     		jmp	.L3	#
- 159              		.cfi_endproc
- 160              	.LFE34:
- 162              		.text
- 163              	.Letext0:
- 164              		.file 3 "/usr/lib/gcc/x86_64-linux-gnu/4.7/include/stddef.h"
- 165              		.file 4 "/usr/include/x86_64-linux-gnu/bits/types.h"
- 166              		.file 5 "/usr/include/libio.h"
- 167              		.file 6 "/usr/include/stdio.h"
- 168              		.file 7 "/usr/include/string.h"
+ 217              		.loc 1 10 0
+ 218 0092 83C8FF   		orl	$-1, %eax	#, D.22009
+ 219 0095 EBE0     		jmp	.L14	#
+ 220              	.LVL21:
+ 221              	.L11:
+ 222              	.LBE113:
+ 223              	.LBE112:
+  19:strlentest.c  ****     return 0;
+ 224              		.loc 1 19 0
+ 225 0097 488D7C24 		leaq	16(%rsp), %rdi	#,
+ 225      10
+ 226              	.LVL22:
+ 227 009c 4889C3   		movq	%rax, %rbx	#, tmp99
+ 228              	.LVL23:
+ 229 009f E8000000 		call	_ZNSsD1Ev	#
+ 229      00
+ 230              	.LVL24:
+ 231 00a4 4889DF   		movq	%rbx, %rdi	# tmp99,
+ 232 00a7 E8000000 		call	_Unwind_Resume	#
+ 232      00
+ 233              	.LEHE2:
+ 234              	.LVL25:
+ 235              	.LBE114:
+ 236              		.cfi_endproc
+ 237              	.LFE850:
+ 238              		.globl	__gxx_personality_v0
+ 239              		.section	.gcc_except_table,"a",@progbits
+ 240              	.LLSDA850:
+ 241 0000 FF       		.byte	0xff
+ 242 0001 FF       		.byte	0xff
+ 243 0002 01       		.byte	0x1
+ 244 0003 0E       		.uleb128 .LLSDACSE850-.LLSDACSB850
+ 245              	.LLSDACSB850:
+ 246 0004 1D       		.uleb128 .LEHB0-.LFB850
+ 247 0005 05       		.uleb128 .LEHE0-.LEHB0
+ 248 0006 00       		.uleb128 0
+ 249 0007 00       		.uleb128 0
+ 250 0008 3C       		.uleb128 .LEHB1-.LFB850
+ 251 0009 1F       		.uleb128 .LEHE1-.LEHB1
+ 252 000a 9701     		.uleb128 .L11-.LFB850
+ 253 000c 00       		.uleb128 0
+ 254 000d 8D01     		.uleb128 .LEHB2-.LFB850
+ 255 000f 1F       		.uleb128 .LEHE2-.LEHB2
+ 256 0010 00       		.uleb128 0
+ 257 0011 00       		.uleb128 0
+ 258              	.LLSDACSE850:
+ 259              		.section	.text.startup
+ 261              		.text
+ 262              	.Letext0:
+ 263              		.file 4 "/usr/lib/gcc/x86_64-linux-gnu/4.7/include/stddef.h"
+ 264              		.file 5 "/usr/include/x86_64-linux-gnu/bits/types.h"
+ 265              		.file 6 "/usr/include/stdio.h"
+ 266              		.file 7 "/usr/include/libio.h"
+ 267              		.file 8 "/usr/include/wchar.h"
+ 268              		.file 9 "/usr/include/_G_config.h"
+ 269              		.file 10 "<built-in>"
+ 270              		.file 11 "/usr/include/c++/4.7/cstdio"
+ 271              		.file 12 "/usr/include/c++/4.7/cwchar"
+ 272              		.file 13 "/usr/include/c++/4.7/bits/char_traits.h"
+ 273              		.file 14 "/usr/include/c++/4.7/x86_64-linux-gnu/bits/c++config.h"
+ 274              		.file 15 "/usr/include/c++/4.7/cstdint"
+ 275              		.file 16 "/usr/include/c++/4.7/bits/exception_ptr.h"
+ 276              		.file 17 "/usr/include/c++/4.7/bits/allocator.h"
+ 277              		.file 18 "/usr/include/c++/4.7/clocale"
+ 278              		.file 19 "/usr/include/c++/4.7/cstdlib"
+ 279              		.file 20 "/usr/include/c++/4.7/bits/basic_string.tcc"
+ 280              		.file 21 "/usr/include/c++/4.7/initializer_list"
+ 281              		.file 22 "/usr/include/c++/4.7/bits/stringfwd.h"
+ 282              		.file 23 "/usr/include/c++/4.7/bits/stl_iterator_base_types.h"
+ 283              		.file 24 "/usr/include/x86_64-linux-gnu/bits/stdio.h"
+ 284              		.file 25 "/usr/include/c++/4.7/ext/new_allocator.h"
+ 285              		.file 26 "/usr/include/c++/4.7/ext/numeric_traits.h"
+ 286              		.file 27 "/usr/include/c++/4.7/bits/stl_iterator.h"
+ 287              		.file 28 "/usr/include/c++/4.7/debug/debug.h"
+ 288              		.file 29 "/usr/include/x86_64-linux-gnu/bits/wchar2.h"
+ 289              		.file 30 "/usr/include/time.h"
+ 290              		.file 31 "/usr/include/stdint.h"
+ 291              		.file 32 "/usr/include/locale.h"
+ 292              		.file 33 "/usr/include/c++/4.7/x86_64-linux-gnu/bits/atomic_word.h"
+ 293              		.file 34 "/usr/include/stdlib.h"
+ 294              		.file 35 "/usr/include/x86_64-linux-gnu/bits/stdlib.h"
+ 295              		.file 36 "/usr/include/c++/4.7/ext/atomicity.h"
+ 296              		.file 37 "/usr/include/c++/4.7/x86_64-linux-gnu/bits/gthr-default.h"
+ 297              		.file 38 "/usr/include/c++/4.7/bits/stl_pair.h"
