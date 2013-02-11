@@ -1,0 +1,308 @@
+   1              		.file	"strlentest.c"
+   2              	# GNU C (Ubuntu/Linaro 4.7.2-2ubuntu1) version 4.7.2 (x86_64-linux-gnu)
+   3              	#	compiled by GNU C version 4.7.2, GMP version 5.0.2, MPFR version 3.1.0-p3, MPC version 0.9
+   4              	# GGC heuristics: --param ggc-min-expand=98 --param ggc-min-heapsize=127367
+   5              	# options passed:  -imultiarch x86_64-linux-gnu strlentest.c -mtune=generic
+   6              	# -march=x86-64 -g -O3 -std=c99 -fverbose-asm -fstack-protector
+   7              	# options enabled:  -fasynchronous-unwind-tables -fauto-inc-dec
+   8              	# -fbranch-count-reg -fcaller-saves -fcombine-stack-adjustments -fcommon
+   9              	# -fcompare-elim -fcprop-registers -fcrossjumping -fcse-follow-jumps
+  10              	# -fdebug-types-section -fdefer-pop -fdelete-null-pointer-checks
+  11              	# -fdevirtualize -fdwarf2-cfi-asm -fearly-inlining
+  12              	# -feliminate-unused-debug-types -fexpensive-optimizations
+  13              	# -fforward-propagate -ffunction-cse -fgcse -fgcse-after-reload -fgcse-lm
+  14              	# -fgnu-runtime -fguess-branch-probability -fident -fif-conversion
+  15              	# -fif-conversion2 -findirect-inlining -finline -finline-atomics
+  16              	# -finline-functions -finline-functions-called-once
+  17              	# -finline-small-functions -fipa-cp -fipa-cp-clone -fipa-profile
+  18              	# -fipa-pure-const -fipa-reference -fipa-sra -fira-share-save-slots
+  19              	# -fira-share-spill-slots -fivopts -fkeep-static-consts
+  20              	# -fleading-underscore -fmath-errno -fmerge-constants -fmerge-debug-strings
+  21              	# -fmove-loop-invariants -fomit-frame-pointer -foptimize-register-move
+  22              	# -foptimize-sibling-calls -foptimize-strlen -fpartial-inlining -fpeephole
+  23              	# -fpeephole2 -fpredictive-commoning -fprefetch-loop-arrays -free
+  24              	# -freg-struct-return -fregmove -freorder-blocks -freorder-functions
+  25              	# -frerun-cse-after-loop -fsched-critical-path-heuristic
+  26              	# -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
+  27              	# -fsched-last-insn-heuristic -fsched-rank-heuristic -fsched-spec
+  28              	# -fsched-spec-insn-heuristic -fsched-stalled-insns-dep -fschedule-insns2
+  29              	# -fshow-column -fshrink-wrap -fsigned-zeros -fsplit-ivs-in-unroller
+  30              	# -fsplit-wide-types -fstack-protector -fstrict-aliasing -fstrict-overflow
+  31              	# -fstrict-volatile-bitfields -fthread-jumps -ftoplevel-reorder
+  32              	# -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce -ftree-ccp
+  33              	# -ftree-ch -ftree-copy-prop -ftree-copyrename -ftree-cselim -ftree-dce
+  34              	# -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+  35              	# -ftree-loop-distribute-patterns -ftree-loop-if-convert -ftree-loop-im
+  36              	# -ftree-loop-ivcanon -ftree-loop-optimize -ftree-parallelize-loops=
+  37              	# -ftree-partial-pre -ftree-phiprop -ftree-pre -ftree-pta -ftree-reassoc
+  38              	# -ftree-scev-cprop -ftree-sink -ftree-slp-vectorize -ftree-sra
+  39              	# -ftree-switch-conversion -ftree-tail-merge -ftree-ter
+  40              	# -ftree-vect-loop-version -ftree-vectorize -ftree-vrp -funit-at-a-time
+  41              	# -funswitch-loops -funwind-tables -fvar-tracking
+  42              	# -fvar-tracking-assignments -fvect-cost-model -fverbose-asm
+  43              	# -fzero-initialized-in-bss -m128bit-long-double -m64 -m80387
+  44              	# -maccumulate-outgoing-args -malign-stringops -mfancy-math-387
+  45              	# -mfp-ret-in-387 -mglibc -mieee-fp -mmmx -mno-sse4 -mpush-args -mred-zone
+  46              	# -msse -msse2 -mtls-direct-seg-refs
+  47              	
+  48              		.text
+  49              	.Ltext0:
+  50              		.section	.rodata.str1.1,"aMS",@progbits,1
+  51              	.LC0:
+  52 0000 55736167 		.string	"Usage: %s string\n"
+  52      653A2025 
+  52      73207374 
+  52      72696E67 
+  52      0A00
+  53              	.LC1:
+  54 0012 25630A00 		.string	"%c\n"
+  55              		.section	.text.startup,"ax",@progbits
+  56              		.p2align 4,,15
+  57              		.globl	main
+  59              	main:
+  60              	.LFB34:
+  61              		.file 1 "strlentest.c"
+   1:strlentest.c  **** #include <stdio.h>
+   2:strlentest.c  **** #include <string.h>
+   3:strlentest.c  **** #include "rdtsc.h"
+   4:strlentest.c  **** 
+   5:strlentest.c  **** typedef unsigned long long ull;
+   6:strlentest.c  **** 
+   7:strlentest.c  **** int main(int argc, char** argv) {
+  62              		.loc 1 7 0
+  63              		.cfi_startproc
+  64              	.LVL0:
+  65 0000 4154     		pushq	%r12	#
+  66              	.LCFI0:
+  67              		.cfi_def_cfa_offset 16
+  68              		.cfi_offset 12, -16
+   8:strlentest.c  ****     if (argc != 2) {
+  69              		.loc 1 8 0
+  70 0002 83FF02   		cmpl	$2, %edi	#, argc
+   7:strlentest.c  **** int main(int argc, char** argv) {
+  71              		.loc 1 7 0
+  72 0005 55       		pushq	%rbp	#
+  73              	.LCFI1:
+  74              		.cfi_def_cfa_offset 24
+  75              		.cfi_offset 6, -24
+  76 0006 53       		pushq	%rbx	#
+  77              	.LCFI2:
+  78              		.cfi_def_cfa_offset 32
+  79              		.cfi_offset 3, -32
+  80              		.loc 1 8 0
+  81 0007 753E     		jne	.L8	#,
+   9:strlentest.c  ****         printf("Usage: %s string\n", argv[0]);
+  10:strlentest.c  ****         return -1;
+  11:strlentest.c  ****     }
+  12:strlentest.c  **** 
+  13:strlentest.c  ****     const char* k = argv[1];
+  82              		.loc 1 13 0
+  83 0009 4C8B6608 		movq	8(%rsi), %r12	# MEM[(char * *)argv_4(D) + 8B], k
+  84              	.LVL1:
+  85              	.LBB7:
+  14:strlentest.c  **** 
+  15:strlentest.c  ****     for (unsigned int i=0; i<strlen(k); i++) {
+  86              		.loc 1 15 0
+  87 000d 31DB     		xorl	%ebx, %ebx	# i
+  88 000f EB20     		jmp	.L4	#
+  89              	.LVL2:
+  90              		.p2align 4,,10
+  91 0011 0F1F8000 		.p2align 3
+  91      000000
+  92              	.L5:
+  16:strlentest.c  ****         printf("%c\n", k[i]);
+  93              		.loc 1 16 0 discriminator 2
+  94 0018 410FBE14 		movsbl	(%r12,%rbp), %edx	# *D.2364_12, *D.2364_12
+  94      2C
+  95              	.LBB8:
+  96              	.LBB9:
+  97              		.file 2 "/usr/include/x86_64-linux-gnu/bits/stdio2.h"
+   1:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** /* Checking macros for stdio functions.
+   2:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    Copyright (C) 2004, 2005, 2007, 2008 Free Software Foundation, Inc.
+   3:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    This file is part of the GNU C Library.
+   4:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 
+   5:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    The GNU C Library is free software; you can redistribute it and/or
+   6:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    modify it under the terms of the GNU Lesser General Public
+   7:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    License as published by the Free Software Foundation; either
+   8:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    version 2.1 of the License, or (at your option) any later version.
+   9:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 
+  10:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    The GNU C Library is distributed in the hope that it will be useful,
+  11:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    but WITHOUT ANY WARRANTY; without even the implied warranty of
+  12:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  13:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    Lesser General Public License for more details.
+  14:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 
+  15:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    You should have received a copy of the GNU Lesser General Public
+  16:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    License along with the GNU C Library; if not, write to the Free
+  17:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+  18:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****    02111-1307 USA.  */
+  19:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 
+  20:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** #ifndef _STDIO_H
+  21:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** # error "Never include <bits/stdio2.h> directly; use <stdio.h> instead."
+  22:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** #endif
+  23:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 
+  24:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** extern int __sprintf_chk (char *__restrict __s, int __flag, size_t __slen,
+  25:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 			  __const char *__restrict __format, ...) __THROW;
+  26:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** extern int __vsprintf_chk (char *__restrict __s, int __flag, size_t __slen,
+  27:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 			   __const char *__restrict __format,
+  28:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 			   _G_va_list __ap) __THROW;
+  29:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 
+  30:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** #ifdef __va_arg_pack
+  31:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** __extern_always_inline int
+  32:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** __NTH (sprintf (char *__restrict __s, __const char *__restrict __fmt, ...))
+  33:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** {
+  34:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+  35:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 				  __bos (__s), __fmt, __va_arg_pack ());
+  36:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** }
+  37:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** #elif !defined __cplusplus
+  38:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** # define sprintf(str, ...) \
+  39:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****   __builtin___sprintf_chk (str, __USE_FORTIFY_LEVEL - 1, __bos (str), \
+  40:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 			   __VA_ARGS__)
+  41:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** #endif
+  42:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 
+  43:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** __extern_always_inline int
+  44:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** __NTH (vsprintf (char *__restrict __s, __const char *__restrict __fmt,
+  45:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 		 _G_va_list __ap))
+  46:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** {
+  47:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****   return __builtin___vsprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+  48:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 				   __bos (__s), __fmt, __ap);
+  49:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** }
+  50:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 
+  51:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** #if defined __USE_BSD || defined __USE_ISOC99 || defined __USE_UNIX98
+  52:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 
+  53:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** extern int __snprintf_chk (char *__restrict __s, size_t __n, int __flag,
+  54:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 			   size_t __slen, __const char *__restrict __format,
+  55:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 			   ...) __THROW;
+  56:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** extern int __vsnprintf_chk (char *__restrict __s, size_t __n, int __flag,
+  57:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 			    size_t __slen, __const char *__restrict __format,
+  58:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 			    _G_va_list __ap) __THROW;
+  59:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 
+  60:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** # ifdef __va_arg_pack
+  61:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** __extern_always_inline int
+  62:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** __NTH (snprintf (char *__restrict __s, size_t __n,
+  63:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 		 __const char *__restrict __fmt, ...))
+  64:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** {
+  65:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+  66:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 				   __bos (__s), __fmt, __va_arg_pack ());
+  67:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** }
+  68:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** # elif !defined __cplusplus
+  69:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** #  define snprintf(str, len, ...) \
+  70:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****   __builtin___snprintf_chk (str, len, __USE_FORTIFY_LEVEL - 1, __bos (str), \
+  71:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 			    __VA_ARGS__)
+  72:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** # endif
+  73:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 
+  74:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** __extern_always_inline int
+  75:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** __NTH (vsnprintf (char *__restrict __s, size_t __n,
+  76:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 		  __const char *__restrict __fmt, _G_va_list __ap))
+  77:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** {
+  78:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****   return __builtin___vsnprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+  79:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 				    __bos (__s), __fmt, __ap);
+  80:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** }
+  81:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 
+  82:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** #endif
+  83:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 
+  84:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** #if __USE_FORTIFY_LEVEL > 1
+  85:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 
+  86:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** extern int __fprintf_chk (FILE *__restrict __stream, int __flag,
+  87:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 			  __const char *__restrict __format, ...);
+  88:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** extern int __printf_chk (int __flag, __const char *__restrict __format, ...);
+  89:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** extern int __vfprintf_chk (FILE *__restrict __stream, int __flag,
+  90:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 			   __const char *__restrict __format, _G_va_list __ap);
+  91:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** extern int __vprintf_chk (int __flag, __const char *__restrict __format,
+  92:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 			  _G_va_list __ap);
+  93:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 
+  94:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** # ifdef __va_arg_pack
+  95:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** __extern_always_inline int
+  96:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** fprintf (FILE *__restrict __stream, __const char *__restrict __fmt, ...)
+  97:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** {
+  98:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****   return __fprintf_chk (__stream, __USE_FORTIFY_LEVEL - 1, __fmt,
+  99:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 			__va_arg_pack ());
+ 100:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** }
+ 101:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** 
+ 102:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** __extern_always_inline int
+ 103:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** printf (__const char *__restrict __fmt, ...)
+ 104:/usr/include/x86_64-linux-gnu/bits/stdio2.h **** {
+ 105:/usr/include/x86_64-linux-gnu/bits/stdio2.h ****   return __printf_chk (__USE_FORTIFY_LEVEL - 1, __fmt, __va_arg_pack ());
+  98              		.loc 2 105 0 discriminator 2
+  99 001d BE000000 		movl	$.LC1, %esi	#,
+  99      00
+ 100 0022 BF010000 		movl	$1, %edi	#,
+ 100      00
+ 101 0027 31C0     		xorl	%eax, %eax	#
+ 102              	.LBE9:
+ 103              	.LBE8:
+  15:strlentest.c  ****     for (unsigned int i=0; i<strlen(k); i++) {
+ 104              		.loc 1 15 0 discriminator 2
+ 105 0029 83C301   		addl	$1, %ebx	#, i
+ 106              	.LVL3:
+ 107              	.LBB11:
+ 108              	.LBB10:
+ 109              		.loc 2 105 0 discriminator 2
+ 110 002c E8000000 		call	__printf_chk	#
+ 110      00
+ 111              	.LVL4:
+ 112              	.L4:
+ 113              	.LBE10:
+ 114              	.LBE11:
+  15:strlentest.c  ****     for (unsigned int i=0; i<strlen(k); i++) {
+ 115              		.loc 1 15 0 discriminator 1
+ 116 0031 89DD     		movl	%ebx, %ebp	# i, D.2367
+ 117 0033 4C89E7   		movq	%r12, %rdi	# k,
+ 118 0036 E8000000 		call	strlen	#
+ 118      00
+ 119              	.LVL5:
+ 120 003b 4839C5   		cmpq	%rax, %rbp	# tmp78, D.2367
+ 121 003e 72D8     		jb	.L5	#,
+  17:strlentest.c  ****     }
+  18:strlentest.c  **** 
+  19:strlentest.c  ****     return 0;
+ 122              		.loc 1 19 0
+ 123 0040 31C0     		xorl	%eax, %eax	# D.2362
+ 124              	.LVL6:
+ 125              	.L3:
+ 126              	.LBE7:
+  20:strlentest.c  **** }
+ 127              		.loc 1 20 0
+ 128 0042 5B       		popq	%rbx	#
+ 129              	.LCFI3:
+ 130              		.cfi_remember_state
+ 131              		.cfi_def_cfa_offset 24
+ 132 0043 5D       		popq	%rbp	#
+ 133              	.LCFI4:
+ 134              		.cfi_def_cfa_offset 16
+ 135 0044 415C     		popq	%r12	#
+ 136              	.LCFI5:
+ 137              		.cfi_def_cfa_offset 8
+ 138 0046 C3       		ret
+ 139              	.LVL7:
+ 140              	.L8:
+ 141              	.LCFI6:
+ 142              		.cfi_restore_state
+ 143              	.LBB12:
+ 144              	.LBB13:
+ 145              		.loc 2 105 0
+ 146 0047 488B16   		movq	(%rsi), %rdx	# *argv_4(D),
+ 147 004a BF010000 		movl	$1, %edi	#,
+ 147      00
+ 148              	.LVL8:
+ 149 004f BE000000 		movl	$.LC0, %esi	#,
+ 149      00
+ 150              	.LVL9:
+ 151 0054 31C0     		xorl	%eax, %eax	#
+ 152 0056 E8000000 		call	__printf_chk	#
+ 152      00
+ 153              	.LVL10:
+ 154              	.LBE13:
+ 155              	.LBE12:
+  10:strlentest.c  ****         return -1;
+ 156              		.loc 1 10 0
+ 157 005b 83C8FF   		orl	$-1, %eax	#, D.2362
+ 158 005e EBE2     		jmp	.L3	#
+ 159              		.cfi_endproc
+ 160              	.LFE34:
+ 162              		.text
+ 163              	.Letext0:
+ 164              		.file 3 "/usr/lib/gcc/x86_64-linux-gnu/4.7/include/stddef.h"
+ 165              		.file 4 "/usr/include/x86_64-linux-gnu/bits/types.h"
+ 166              		.file 5 "/usr/include/libio.h"
+ 167              		.file 6 "/usr/include/stdio.h"
+ 168              		.file 7 "/usr/include/string.h"
